@@ -10,7 +10,10 @@
 
     <!--Description-->
     
-        <meta name="description" content="前言">
+        <meta name="description" content="自从1998年推出Css2议案以来，table布局逐渐淡出了人们的视野。自那以后，css布局成了优雅的代名词。
+
+在所有Css概念中，如果要颁一个最少提及到的定位方法奖的话，那负Margins当之无愧。它就像一个互联网的禁忌话题，每个人都在使用它，但是没人提到它。
+拨乱反正我们经常使用Margins">
     
 
     <!--Author-->
@@ -24,7 +27,7 @@
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Hexo">
+    <meta property="og:site_name" content="Shirleymatrix`s Blog">
 
     <!--Page Cover-->
     
@@ -33,7 +36,7 @@
 
     <!-- Title -->
     
-    <title>Negative Margins - Hexo</title>
+    <title>Negative Margins - Shirleymatrix`s Blog</title>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/blog/css/reset.css">
@@ -64,7 +67,7 @@
 <!-- Navigation -->
 <header>
     <div class="logo">
-        <a href="/blog/">Hexo</a>
+        <a href="/blog/">Shirleymatrix`s Blog</a>
     </div><!-- end logo -->
 
     <div id="menu_icon"></div>
@@ -114,7 +117,7 @@
 <!-- Main Content -->
 <section class="main clearfix">
 
-    <section class="top" style="background: url('http://placehold.it/1300x500');">
+    <section class="top" style="background: url('https://i.imgur.com/ckzDUCr.png');">
         <div class="wrapper content_header clearfix">
             
 
@@ -126,7 +129,7 @@
         
         <li><a href="/blog/" class="grid" data-title="Portfolio"></a></li>
         
-        <li><a href="/blog/2019/07/08/hello-world/" class="next" data-title="Hello World"></a></li>
+        <li><a class="next disabled"></a></li>
         
     </ul>
 
@@ -142,7 +145,82 @@
             
 
             <!-- Content -->
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
+            <blockquote>
+<p>自从1998年推出Css2议案以来，table布局逐渐淡出了人们的视野。自那以后，css布局成了优雅的代名词。</p>
+</blockquote>
+<p>在所有Css概念中，如果要颁一个最少提及到的定位方法奖的话，那负Margins当之无愧。它就像一个互联网的禁忌话题，每个人都在使用它，但是没人提到它。</p>
+<h2 id="拨乱反正"><a href="#拨乱反正" class="headerlink" title="拨乱反正"></a>拨乱反正</h2><p>我们经常使用Margins，但当它变为负值时，程序员们对待它的态度出现了分歧。有些人非常喜欢它而另一些人视之为洪水猛兽。</p>
+<p>一个负margins的例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#content</span> &#123;<span class="attribute">margin-left</span>:-<span class="number">100px</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>负Margins通常被轻度使用，但是你接下来会意识到它所能做的不仅限于如此。下面是一些关于负Margin的注意事项：</p>
+<ul>
+<li><strong>它们是标准css规范</strong>：我可没在开玩笑，W3C甚至说：“允许使用Margins的负值…”想要详细了解的话，可以看看W3c的文档这里。</li>
+<li><strong>它不是捣蛋鬼</strong>： 这是毋庸置疑的。正因为你没能正确理解它，你才会认为它是在捣乱。而你用它来修复你在其他地方犯的错误时，它才会因此而背锅。</li>
+<li><strong>随波逐“流”</strong>：它不会打乱文档流。所以当你使用负Margins去向上微调一个元素的时候，它后面一连串的元素也会随之微调。</li>
+<li><strong>兼容性极高</strong>：负margins被所有现代浏览器所支持（在大部分情况下IE6也支持）。<br>它在浮动元素中的表现有所不同：负Margins需要被谨慎使用。</li>
+<li><strong>Dreamweaver不支持负Margins</strong>： 负Margins在Dreamweaver的设计视图下无法被正确显示，话说为什么你要在Dreamweaver里检查你的网页呢？</li>
+</ul>
+<h2 id="负Margins-使用手册"><a href="#负Margins-使用手册" class="headerlink" title="负Margins 使用手册"></a>负Margins 使用手册</h2><p>正确使用负Margins会起到卓越的效果，比如下面两种场景:</p>
+<h3 id="在静态元素中使用负Margins"><a href="#在静态元素中使用负Margins" class="headerlink" title="在静态元素中使用负Margins"></a>在静态元素中使用负Margins</h3><img src="https://i.loli.net/2019/07/10/5d2595294392041686.gif">
+
+<p>静态元素是指的没有应用浮动的元素。上图说明了当使用了负Margins时静态元素是如何表现的。</p>
+<p>当静态元素被给予负的<strong>上边距</strong>或<strong>左边距</strong>时，元素会被拉向指定的方向。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 向上移动10px */</span></span><br><span class="line"><span class="selector-id">#mydiv1</span> &#123;<span class="attribute">margin-top</span>:-<span class="number">10px</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但当你对元素应用负的<strong>下边距</strong>或<strong>右边距</strong>时，元素并不会像你想象的那样被向右或者向下拉，而是把下一个元素拉向该元素，发生重叠。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 所有#mydiv1以后的元素都往上移动了10px</span></span><br><span class="line"><span class="comment">* 但是#mydiv1本身并没有移动`</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-id">#mydiv1</span> &#123;<span class="attribute">margin-bottom</span>:-<span class="number">10px</span>;&#125;`</span><br></pre></td></tr></table></figure>
+
+<p>如果元素没有设置宽度，在左右两个方向同时设置负边距会增加它的宽度。在这里它表现的就像padding一样。</p>
+<h3 id="在浮动元素上使用负边距"><a href="#在浮动元素上使用负边距" class="headerlink" title="在浮动元素上使用负边距"></a>在浮动元素上使用负边距</h3><p>下面是我们的模拟场景：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">“mydiv1”</span>&gt;</span>First<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">“mydiv2”</span>&gt;</span>Second<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当浮动元素被设置为负边距时，它会导致内容重叠。这可以被用于一列宽度为100%而另一列宽度固定的流式布局。</p>
+<p>当两个元素都向左浮动而第一个元素被设置为负边距时，mydiv2会当做mydiv1的宽度缩小了20px（从而发生了重叠）。有趣的是，mydiv1并不会因此而改变，而是会继续保持原样。</p>
+<p>当负边距等于其实际宽度时，它会被完全重叠。这是因为边距，边框，内边距和宽度组成了元素的实际宽度。所以当负边距等于它剩余的宽度时，这个物体的有效宽度变为0px<br>。</p>
+<h2 id="负边距的应用"><a href="#负边距的应用" class="headerlink" title="负边距的应用"></a>负边距的应用</h2><p>现在我们已经对负边距有所了解了，让我们一起来看看可以用负边距实现哪些有趣的效果：</p>
+<h3 id="分栏"><a href="#分栏" class="headerlink" title="分栏"></a>分栏</h3><p>如果你有一个列表，列表的内容太多以致于无法完美显示，为什么不试试将列表分栏呢？使用负边距可以让你在不使用浮动或加入新的标签的情况下将列表分栏。这很容易实现：</p>
+<p>HTML</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">“col1”</span>&gt;</span>Eggs<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">“col1”</span>&gt;</span>Ham<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">“col2</span> <span class="attr">top</span>”&gt;</span>Bread<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">“col2”</span>&gt;</span>Butter<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">“col3</span> <span class="attr">top</span>”&gt;</span>Flour<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">“col3”</span>&gt;</span>Cream<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> &#123;<span class="attribute">list-style</span>:none;&#125;</span><br><span class="line"><span class="selector-tag">li</span> &#123;<span class="attribute">line-height</span>:<span class="number">1.3em</span>;&#125;</span><br><span class="line"><span class="selector-class">.col2</span> &#123;<span class="attribute">margin-left</span>:<span class="number">100px</span>;&#125;</span><br><span class="line"><span class="selector-class">.col3</span> &#123;<span class="attribute">margin-left</span>:<span class="number">200px</span>;&#125;</span><br><span class="line"><span class="selector-class">.top</span> &#123;<span class="attribute">margin-top</span>:-<span class="number">2.6em</span>;&#125; <span class="comment">/* the clincher */</span></span><br></pre></td></tr></table></figure>
+
+<img src="https://i.loli.net/2019/07/10/5d259528aa3f540306.gif">
+
+<p>通过给元素添加 margin-top:-2.6em（行高的两倍），所有的元素都完美的对齐。使用负边距比使用相对定位更好，因为你只需要单独设置列首的第一个元素而不需要为列中的每一个元素都设置定位。</p>
+<h3 id="使用重叠来突出重要信息"><a href="#使用重叠来突出重要信息" class="headerlink" title="使用重叠来突出重要信息"></a>使用重叠来突出重要信息</h3><img src="https://i.loli.net/2019/07/10/5d25952a3ba8e42987.gif">
+
+<p>刻意重叠的元素是一种设计语言，它通过重叠制造出纵深感从而突出该元素。 Phlashers.com的信息提示是一个很棒的例子，负边距加上z-index属性，再加上一点点创造力，就可以起到很好的效果。</p>
+<h3 id="实现三维文字效果"><a href="#实现三维文字效果" class="headerlink" title="实现三维文字效果"></a>实现三维文字效果</h3><img src="https://i.loli.net/2019/07/10/5d259529b668e61373.jpg">
+
+<p>这里有一个小技巧。 实现类似 Safari的文本，就是那种前后颜色不一致且略微错开的文本效果。使用负边距来使得前后文本重叠并留下1到2px的偏差，这样我们就实现了这个效果。不再需要使用臃肿的jpegs或gif来实现啦！</p>
+<h3 id="简单的两栏布局"><a href="#简单的两栏布局" class="headerlink" title="简单的两栏布局"></a>简单的两栏布局</h3><p>负边距也被用来实现简单的左边栏固定，右边栏自适应的两栏布局：</p>
+<p>HTML</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">“content”</span>&gt;</span> <span class="tag">&lt;<span class="name">p</span>&gt;</span>Main content in here<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">“sidebar”</span>&gt;</span> <span class="tag">&lt;<span class="name">p</span>&gt;</span>I’m the Sidebar! <span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#content</span> &#123;<span class="attribute">width</span>:<span class="number">100%</span>; <span class="attribute">float</span>:left; <span class="attribute">margin-right</span>:-<span class="number">200</span> px;&#125;</span><br><span class="line"><span class="selector-id">#sidebar</span> &#123;<span class="attribute">width</span>: <span class="number">200</span> px; <span class="attribute">float</span>:left;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这在IE6也可以正常使用。为了防止侧边栏被重叠，需要给侧边栏加上</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#content</span> <span class="selector-tag">p</span> &#123;<span class="attribute">margin-right</span>:<span class="number">200px</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用得当， 负边距可以实现自适应布局，这比使用table来实现两栏好得多。</p>
+<h3 id="微调元素位置"><a href="#微调元素位置" class="headerlink" title="微调元素位置"></a>微调元素位置</h3><p>这是负边距最广泛的用法了。当你在一堆元素中插入一个新的元素但无法对齐时，可以使用负边距来调整新插入的元素。</p>
+<h2 id="Bug的修复方法"><a href="#Bug的修复方法" class="headerlink" title="Bug的修复方法"></a>Bug的修复方法</h2><h3 id="文本和链接的问题"><a href="#文本和链接的问题" class="headerlink" title="文本和链接的问题"></a>文本和链接的问题</h3><p>在过老的浏览器上使用负边距通常会出现一些问题</p>
+<ul>
+<li>链接无法点击</li>
+<li>文本难以被选择</li>
+<li>链接消失</li>
+</ul>
+<p>解决方法：在样式里加上<code>position:relative</code></p>
+<h3 id="内容被截断"><a href="#内容被截断" class="headerlink" title="内容被截断"></a>内容被截断</h3><p>当你使用IE6时，内容有时候会因为其他内容的浮动而被截断。</p>
+<p>解决方法：在浮动元素的样式里加上<code>position:relative</code></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>负边距可以在不增加其他标签的情况下定位元素，这让它在现代web开发中占有一席之地。随着更多人开始选择现代浏览器，使用这项技术的网站会有更光明的未来。</p>
+<blockquote>
+<p>本文翻译自：<a href="https://www.smashingmagazine.com/2009/07/the-definitive-guide-to-using-negative-margins/" target="_blank" rel="noopener">The Definitive Guide to Using Negative Margins</a></p>
+</blockquote>
+
 
             <!-- Tags -->
             
