@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <!--Description-->
+    
+        <meta name="description" content="基于原型的语言设计基于类的语言设计存在的问题在面向对象的语言中，大部分是基于类（class-based）的，类是实例的描述，实例是类的具体化。但这个模式存在很多问题：
+
+注意这里主要是对于Smalltalk-80这门语言而言的，在这方面最接近它的现代语言是Ruby,（也许还有python）
+
+
+依赖">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="shirleymatrix">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="prototype No.1 - prototype-based language">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Shirleymatrix`s Blog">
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content>
+    
+
+    <!-- Title -->
+    
+    <title>prototype No.1 - prototype-based language - Shirleymatrix`s Blog</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/blog/css/reset.css">
+    <link rel="stylesheet" href="/blog/css/main.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    
+
+
+    <!--Favicon-->
+    
+
+</head>
+
+<body>
+
+<!-- Menu -->
+<!-- Navigation -->
+<header>
+    <div class="logo">
+        <a href="/blog/">Shirleymatrix`s Blog</a>
+    </div><!-- end logo -->
+
+    <div id="menu_icon"></div>
+    <nav>
+        <ul>
+            
+            <li>
+                <a href="/blog/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/blog/archives">Archives</a>
+            </li>
+            
+        </ul>
+    </nav><!-- end navigation menu -->
+
+    <div class="footer clearfix">
+        <ul class="social clearfix">
+            
+            
+                <li><a href="https://www.facebook.com/" class="fb" target="_blank" data-title="Facebook"></a></li>
+            
+            
+                <li><a href="https://www.behance.net/" class="behance" target="_blank" data-title="Behance"></a></li>
+            
+            
+                <li><a href="https://plus.google.com/+Pixelhint/posts" class="google" target="_blank" data-title="Google+"></a></li>
+            
+            
+                <li><a href="https://dribbble.com/pixelhint" class="dribble" target="_blank" data-title="Dribble"></a></li>
+            
+            
+            
+            
+        </ul><!-- end social -->
+
+        <div class="rights">
+            <p>Copyright © 2014 magnetic.</p>
+            <p>Template by <a href="http://pixelhint.com/magnetic-free-html5-responsive-photography-website-template/">Pixelhint.com</a></p>
+            <p>Hexo Theme by <a href="http://www.codeblocq.com/">Jonathan K.</a></p>
+        </div><!-- end rights -->
+    </div ><!-- end footer -->
+</header><!-- end header -->
+
+
+<!-- Main Content -->
+<section class="main clearfix">
+
+    <section class="top" style="background: url('https://i.imgur.com/ckzDUCr.png');">
+        <div class="wrapper content_header clearfix">
+            
+
+<div class="work_nav">
+
+    <ul class="btn clearfix">
+        
+        <li><a class="previous disabled"></a></li>
+        
+        <li><a href="/blog/" class="grid" data-title="Portfolio"></a></li>
+        
+        <li><a href="/blog/2019/07/25/prototype0/" class="next" data-title="prototype No.0"></a></li>
+        
+    </ul>
+
+</div><!-- end work_nav -->
+            <h1 class="title">prototype No.1 - prototype-based language</h1>
+        </div>
+    </section><!-- end top -->
+
+    <section class="wrapper">
+        <div class="content">
+
+            <!-- Gallery -->
+            
+
+            <!-- Content -->
+            <h2 id="基于原型的语言设计"><a href="#基于原型的语言设计" class="headerlink" title="基于原型的语言设计"></a>基于原型的语言设计</h2><h3 id="基于类的语言设计存在的问题"><a href="#基于类的语言设计存在的问题" class="headerlink" title="基于类的语言设计存在的问题"></a>基于类的语言设计存在的问题</h3><p>在面向对象的语言中，大部分是基于类（class-based）的，类是实例的描述，实例是类的具体化。但这个模式存在很多问题：</p>
+<blockquote>
+<p>注意这里主要是对于Smalltalk-80这门语言而言的，在这方面最接近它的现代语言是Ruby,（也许还有python）</p>
+</blockquote>
+<ul>
+<li><strong>依赖元类（metaclass）</strong>来为不同的类定义不同的，自己独有的方法。这使得语言过于复杂。</li>
+<li><strong>设计的东西和实际操作的东西不一致</strong>程序员为了一个新增的实体需要先去设计一个抽象的类，然后再将其实例化一个实体。程序员设计的是类，而实际操作的确是类的实例，这增加了认知成本。</li>
+</ul>
+<h3 id="问题的根源"><a href="#问题的根源" class="headerlink" title="问题的根源"></a>问题的根源</h3><ul>
+<li><p>类<strong>消息传递的方法</strong>和<strong>生成对象的职责</strong>导致了对元类的依赖。</p>
+<blockquote>
+<p>在Smalltalk - 72中，类也是对象，也有自己的方法。<br>所有类都是 Class类 的实例。就像对象的方法被它的类持有一样，Class也持有所有类的方法（比如创建一个新对象的方法）。<br>当对象接收到消息时，编译器会到对象的类里寻找该方法，当没有找到时，就会到类的父类里寻找，直到到达顶端也就是Class。<br>这就会遇到一个问题：类的方法会被所有类所共享。假如我们有两个类，class Point 和class Rectangle ,当我们想增加一个的类方法，比如newPointfromTwocoordinates时，这会造成class Rectangle 也拥有该方法（Rectangle.newPointfromTwocoordinates()),这个方法是没有任何意义的。<br>故此在Smalltalk-80中引入了mateClass，每一个Class都是它的metaClass的实例，所有mateClass都是MateClass类的实例。通过mateclass来定义class独特方法。<br>mateclass与class如双生子一般，在class创建时被创建。这里由于你不需要再去给metaclass定义特殊方法了，所以问题也就解决了（不过你真的想这么做的话，就需要定义元类的元类，以及进一步，元类的元类的元类……，这就是metaclass这个设计的另一个缺点：meta-regress. ）<br>关于metaclass，可以看看他的设计者在<a href="https://mail.python.org/pipermail/python-dev/2001-May/014508.html" target="_blank" rel="noopener">这里</a>的所说的</p>
+</blockquote>
+</li>
+<li><p>类的职责太多</p>
+<p>  在Smalltalk-80里，类通常有以下职责：</p>
+<ul>
+<li>对象的生成器</li>
+<li>描述实例的表现行为</li>
+<li>描述实例的所能接受的信息</li>
+<li>区分对象</li>
+<li>保存接受消息的方法</li>
+<li>同时改变多个对象的行为的方法</li>
+<li>代表所有的实例</li>
+</ul>
+</li>
+</ul>
+<p>虽然各项之间存在重复部分，但是这也足以表明在smalltalk里类承担了太多的职责。这样的类的设计导致了程序的不直观与复杂</p>
+<hr>
+<h2 id="对基于原型的语言的简单构想"><a href="#对基于原型的语言的简单构想" class="headerlink" title="对基于原型的语言的简单构想"></a>对基于原型的语言的简单构想</h2><blockquote>
+<p>这里仅是一个简单的构想，设计一个最简单的基于原型的语言</p>
+</blockquote>
+<p>在基于原型的语言设计里，对象是<strong>自给自足的</strong>，也就是说，对象包含自己的状态和行为，不再依赖于类</p>
+<p>产生新对象的唯一方法是<strong>完全复制一个已经存在的对象</strong>，包括它所有的状态和行为，新对象和被复制对象间<strong>没有任何联系</strong>。</p>
+<p>这就是最简单的基于原型的语言的设计了，很简洁不是吗？不再有类（当然也就不再需要元类），直接操作对象，更加直观，而且更易懂。</p>
+<p>但这还很不完善：</p>
+<ul>
+<li>第一缺少对对象的<strong>分类</strong>，对象之间没有分别。没办法区分一个对象到底是数组还是字符串还是其他的。</li>
+<li>第二，缺少一种简单的方法可以同时<strong>更新</strong>一组对象。</li>
+</ul>
+<p>这些对于语言都是很重要的，所以下一步要实现对分类和更新这两点的支持。</p>
+<h2 id="再进一步的设想"><a href="#再进一步的设想" class="headerlink" title="再进一步的设想"></a>再进一步的设想</h2><p>对象的状态是由一组<strong>命名字段</strong>组成的。字段的名字可以被单独访问</p>
+<p>对象的行为由两部分组成：第一部分是<strong>对象的方法描述</strong>，这与Smalltalk一致，以及<strong>接受消息的方法</strong>。第二部分是<strong>消息处理的协议</strong>，也就是描述对象可以理解的信息类型，协议规定了接受的消息的参数，以及协议处理后返回的消息。</p>
+<h3 id="继承的约束条件"><a href="#继承的约束条件" class="headerlink" title="继承的约束条件"></a>继承的约束条件</h3><p>对于继承，我们有如下约束条件：</p>
+<ul>
+<li>命名字段约束：当y所包含的所有命名字段也被x所包含时，约束成立</li>
+<li>行为约束：当y所包含的所有方法也被x所包含时，约束成立</li>
+<li>协议约束：当y的协议时x的协议的子集时，约束成立（如果y可以理解的信息也被x所理解，以及x处理信息所返回的对象也遵循y中的相应协议）</li>
+</ul>
+<p>这三个约束条件基本上时相互独立的，例如，x可能只继承了y的协议而没有包含y的方法（x可能通过其他不同的方式实现了必要的方法）。如果y中有没有使用的字段，那x会继承y的全部方法但不会继承所有命名字段。</p>
+<p>通常情况下会将这三个约束同时使用，所以<strong>对后代的约束是：命名字段约束^行为约束^协议约束</strong></p>
+<h3 id="对象创建方式"><a href="#对象创建方式" class="headerlink" title="对象创建方式"></a>对象创建方式</h3><p>有两种创建对象的方式：<strong>复制</strong>以及<strong>产生后代</strong>。复制是指接收到消息的对象完全复制并返回，在新对象和被复制对象之间没有任何联系。产生后代是指复制接受消息的对象，但在新对象和被复制对象间留下一个单向的后代约束。</p>
+<h2 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h2><blockquote>
+<p>后面补充</p>
+</blockquote>
+<h2 id="优劣分析"><a href="#优劣分析" class="headerlink" title="优劣分析"></a>优劣分析</h2><p>这样设计的语言相对于基于类的语言有什么优势呢？</p>
+<ul>
+<li>简洁，你只需要去关心对象的状态和行为</li>
+<li>即使在更深层次，它依然很简洁。不在需要元类了</li>
+<li>字段会在创建对象时被自动赋予初始值。</li>
+<li>对于具象化的，视觉性的编程更加友好（比如UI，UX）</li>
+<li>对象可以被单独扩展</li>
+</ul>
+<p>不过它也有一些不足的地方</p>
+<ul>
+<li>对于原始对象来说有点反常：比如整数，很难去描述整数的原型是什么。</li>
+<li>原型也很难去描述一个数据结构比如栈和队列。</li>
+<li>原型可能会在不经意间被修改。</li>
+<li>效率问题，复制一个新对象的效率相较于类继承效率低</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>基于原型的语言设计是可行的（废话，且对于基于类的语言设计来说，显得更简洁，易于接受</li>
+<li>并且对于视觉性编程更友好，编写效率也更块，也更灵活，这也是JavaScript选择基于原型设计的原因之一</li>
+</ul>
+
+
+            <!-- Tags -->
+            
+
+
+<div class="tags">
+    <a href="/blog/tags/code/">code</a> <a href="/blog/tags/js/">js</a> <a href="/blog/tags/prototype/">prototype</a>
+</div>
+
+
+
+            <!-- Comments -->
+            <div>
+                
+
+
+
+
+            </div>
+        </div><!-- end content -->
+    </section>
+</section><!-- end main -->
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="/blog/js/jquery.js"></script>
+
+<!-- Custom Code -->
+<script src="/blog/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
